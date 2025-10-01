@@ -1,16 +1,28 @@
-export function animate({timing, draw, duration}) {
+let animationId = null;
 
-  let start = performance.now();
+export function animate({ duration, timing, draw }) {
+  // Отмена предыдущей запущенной анимации
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
 
-  requestAnimationFrame(function animate(time) {
+  const start = performance.now();
+
+  function frame(time) {
     let timeFraction = (time - start) / duration;
     if (timeFraction > 1) timeFraction = 1;
-    let progress = timing(timeFraction);
-    draw(progress); 
+
+    const progress = timing(timeFraction);
+
+    draw(progress);
 
     if (timeFraction < 1) {
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(frame);
+    } else {
+      animationId = null;
     }
+  }
 
-  });
+  animationId = requestAnimationFrame(frame);
 }

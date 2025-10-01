@@ -9,6 +9,7 @@ module.exports = {
     filename: 'js/main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    publicPath: '/', // Добавьте эту строку
   },
   resolve: {
     fallback: {
@@ -18,19 +19,31 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './balkony.html',
+      filename: 'balkony.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './kuhni.html',
+      filename: 'kuhni.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'css', to: 'css' },
         { from: 'fonts', to: 'fonts' },
         { from: 'images', to: 'images' },
-        { from: 'pages', to: 'pages' }
       ],
     }),
   ],
   devServer: {
-    static: './dist',
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     hot: true,
-    port: 8080,
+    port: 8081,
+    open: true,
   },
+  mode: 'development', 
 };
