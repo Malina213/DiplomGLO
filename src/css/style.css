@@ -776,7 +776,7 @@ p.services-image_mobile {
 #documents {
   background: url("../images/document-bg.jpg");
 }
-.document-inner {
+.sertificate-document {
   display: inline-block;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
@@ -791,7 +791,7 @@ p.services-image_mobile {
   left: 0;
   opacity: 0;
 }
-.document-inner:hover .document-overlay {
+.sertificate-document:hover .document-overlay {
   opacity: 1;
   transition: opacity 0.3s linear;
   -webkit-transition: opacity 0.3s linear;
