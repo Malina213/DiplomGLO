@@ -804,7 +804,7 @@ p.services-image_mobile {
 #documents {
   background: url("../images/document-bg.jpg");
 }
-.document-inner {
+.sertificate-document {
   display: inline-block;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
